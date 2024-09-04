@@ -1,11 +1,11 @@
 
 -- mariadb -u yourusername -p < startDatabase.sql
 
--- Create the database
+-- create the database
 CREATE DATABASE IF NOT EXISTS connectify;
 USE connectify;
 
--- Create the 'users' table
+-- create the 'users' table
 CREATE TABLE IF NOT EXISTS users (
     `ID` INT NOT NULL AUTO_INCREMENT,
     `dateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB;
 
--- Create the 'contacts' table
+-- create the 'contacts' table
 CREATE TABLE IF NOT EXISTS contacts (
     `ID` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL DEFAULT '',
@@ -29,17 +29,17 @@ CREATE TABLE IF NOT EXISTS contacts (
     FOREIGN KEY (`userID`) REFERENCES users(`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Insert sample data into 'users' table
+-- insert sample data into 'users' table
 INSERT INTO users (firstName, lastName, username, password) VALUES
 ('John', 'Doe', 'johndoe', 'password123'),
 ('Jane', 'Smith', 'janesmith', 'password456');
 
--- Insert sample data into 'contacts' table
+-- insert sample data into 'contacts' table
 INSERT INTO contacts (name, phone, email, userID) VALUES
 ('Alice Johnson', '555-1234', 'alice.johnson@example.com', 1),
 ('Bob Brown', '555-5678', 'bob.brown@example.com', 1),
 ('Carol White', '555-8765', 'carol.white@example.com', 2);
 
--- Optionally, display the data to verify
+-- display data
 SELECT * FROM users;
 SELECT * FROM contacts;
