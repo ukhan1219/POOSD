@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS contacts (
 INSERT INTO users (firstName, lastName, username, password) VALUES
 ('John', 'Doe', 'johndoe', 'password123'),
 ('Jane', 'Smith', 'janesmith', 'password456');
-('user', 'l1', 'user1', 'password1');
-('user', 'l2', 'user2', 'password2');
-('user', 'l3', 'user3', 'password3');
-('user', 'l4', 'user4', 'password4');
-('user', 'l5', 'user5', 'password5');
+('user1', 'l1', 'user1', 'password1');
+('user2', 'l2', 'user2', 'password2');
+('user3', 'l3', 'user3', 'password3');
+('user4', 'l4', 'user4', 'password4');
+('user5', 'l5', 'user5', 'password5');
 
 
 -- insert sample data into 'contacts' table
