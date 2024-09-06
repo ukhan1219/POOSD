@@ -13,7 +13,9 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Index Page</title>
 </head>
 <body>
-    <h1>Welcome to the Index Page</h1>
+    <h1>
+        <img src="Connectify.png" alt="Logo" style="width: 200x; height: auto">
+    <h1>
     <p>You are logged in!</p>
 </body>
 </html>

@@ -2,7 +2,6 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Dummy login check. Replace with actual logic.
     $username = $_POST['username'];
     $password = $_POST['password'];
 
