@@ -1,11 +1,14 @@
 const urlBase = 'http://connectify.fyi/LAMPAPI';
 const extension = 'php'
 
-// DELETE ALERT BOXESSSSSSSSS
+// DELETE ALERT BOXESSSSSSSSS AFTER!!!!!!!!!!
+// ^^^^^^^^^
 
 let userID = 0;
 let firstName = "";
 let lastName = "";
+
+// NEED SAVE EDIT OR CANCEL EDIT?
 
 
 // SAMPLE HTML FILE FOR LANDING PAGE CONTACT TABLE:
@@ -83,6 +86,8 @@ function editContact(contactID) {
     let email = prompt("Enter new email:");
     let phone = prompt("Enter new phone:");
 
+    document.getElementById("contactEditResult").innerHTML = "";
+
     if (name == "" || email == "" || phone == "") {
         alert("Please fill all fields!");
         return;
@@ -104,6 +109,7 @@ function editContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
+                document.getElementById("contactEditResult").innerHTML = "Contact has been edited successfully!";
             }
         };
         xhr.send(payload);
@@ -117,6 +123,7 @@ function deleteContact(contactID) {
     readCookie();
 
     let tmp = { ID: contactID };
+    document.getElementById("contactDeleteResult").innerHTML = "";
 
     let payload = JSON.stringify(tmp);
 
@@ -132,6 +139,7 @@ function deleteContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
+                document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
             }
         };
         xhr.send(payload);
@@ -145,6 +153,7 @@ function createContact() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
+    document.getElementById("contactAddResult").innerHTML = "";
 
     readCookie();
 
@@ -180,6 +189,42 @@ function createContact() {
         document.getElementById("contactAddResult").inert = err.message;
     }
 
+}
+
+function doRegister() {
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    document.getElementById("registerResult").innerHTML = "";
+    if (firstName === "" || lastName === "" || username === "" || password === "") {
+        alert("Fill out all field please!");
+        return;
+    }
+
+    let tmp = { firstName: firstName, lastName: lastName, username: username, password: password };
+
+    let payload = JSON.stringify(tmp);
+
+    let url = urlBase + "/register." + extension;
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.setRequestHeader("Content-type", "application/json; charset-UTF-8");
+
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                err = jsonObject.err
+                document.getElementById("registerResult").innerHTML = "User has been created successfully!";
+                window.location.href = "login.html";
+            }
+        };
+        xhr.send(payload);
+    } catch (err) {
+        document.getElementById("registerResult").innerHTML = err.message;
+    }
 }
 
 function doLogin() {
