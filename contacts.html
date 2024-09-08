@@ -17,22 +17,24 @@
     
     <button onclick="showAddPopup()">Click Me</button>
 
-    <!-- Pop-up for displaying the message -->
     <div class="popup" id="addContactPopUp">
-        <p>Name:
-            <input type="text" id="firstName" placeholder="First Name"/>
-        </p>
-        <p>Email:
-            <input type="text" id="lastName" placeholder="Last Name"/>
-        </p>
-        <p>Phone:
-            <input type="text" id="lastName" placeholder="Last Name"/>
-        </p>
-        <button class="account-button" onclick="createContact();">Add Contact</button>
-
         <button class="close-btn" onclick="closePopup()">X</button>
+        <h2>Add Contact</h2>
+        <form id="addContactForm">
+            <p>Name:
+                <input type="text" id="firstName" placeholder="Name"/>
+            </p>
+            <p>Email:
+                <input type="text" id="email" placeholder="Email Address"/>
+            </p>
+            <p>Phone:
+                <input type="text" id="phone" placeholder="(XXX)-XXX-XXXX"/>
+            </p>
+            <button class="account-button" onclick="createContact();">Add Contact</button>
+        </form>
     </div>
 
+    
     <script>
         // Function to show the popup
         function showAddPopup() {
