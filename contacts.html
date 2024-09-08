@@ -2,101 +2,48 @@
 <html>
 <head>
     <title>Connectify Contacts </title>
-    <style>
-        /* Style for the black bar at the top */
-        .top-bar {
-            background-color: black;
-            width: 100%;
-            height: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        /* Centering the content */
-        body {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 50vh;
-            background-color: #ffffff;
-        }
-
-        /* Spacing below the black bar */
-        .content {
-            margin-top: 40px; /* Pushes content below the black bar */
-            text-align: center;
-        }
-
-        .contact-list {
-            max-height: 300px; /* Set the height for scrolling */
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;            
-        }
-
-        .contact-item {
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .contact-item:hover {
-            background-color: #f0f0f0;
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 10;
-        }
-
-        .popup-content {
-            margin-bottom: 15px;
-        }
-
-        .close-btn {
-            padding: 5px 10px;
-            cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 3px;
-        }
-    </style>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet">	
 </head>
 <body>
-    <div class="top-bar"></div> <!-- Black bar at the top -->
+    <div class="top-bar"> <!-- Black bar at the top -->
+        <button class="logout-btn" id="logoutButton" onclick="doLogout();">Logout</button>       
+    </div> 
+    
     <img src="images/contacthead.png" alt="Contact Manager" class="heading-image">
-    <div class="contact-list" id="contactList">
-        <!-- Contacts will be added dynamically here -->
+    <div class="button-container">
+        <button class="account-button" onclick="showAddPopup()">+ Add Contact</button>
     </div>
     
-    <button onclick="showPopup()">Click Me</button>
+    <button onclick="showAddPopup()">Click Me</button>
 
-    <!-- Pop-up for displaying the message -->
-    <div class="popup" id="helloPopup">
-        <p>Hello!</p>
-        <button class="close-btn" onclick="closePopup()">Close</button>
+    <div class="popup" id="addContactPopUp">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <h2>Add Contact</h2>
+        <form id="addContactForm">
+            <p>Name:
+                <input type="text" id="firstName" placeholder="Name"/>
+            </p>
+            <p>Email:
+                <input type="text" id="email" placeholder="Email Address"/>
+            </p>
+            <p>Phone:
+                <input type="text" id="phone" placeholder="(XXX)-XXX-XXXX"/>
+            </p>
+            <button class="account-button" onclick="createContact();">Add Contact</button>
+        </form>
     </div>
 
+    
     <script>
         // Function to show the popup
-        function showPopup() {
-            document.getElementById('helloPopup').style.display = 'block';
+        function showAddPopup() {
+            document.getElementById('addContactPopUp').style.display = 'block';
         }
 
         // Function to close the popup
         function closePopup() {
-            document.getElementById('helloPopup').style.display = 'none';
+            document.getElementById('addContactPopUp').style.display = 'none';
         }
     </script>
 

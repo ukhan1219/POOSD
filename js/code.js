@@ -8,6 +8,7 @@ let userID = 0;
 let firstName = "";
 let lastName = "";
 
+
 // NEED SAVE EDIT OR CANCEL EDIT?
 
 
@@ -308,3 +309,31 @@ function doLogout() {
     document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     window.location.href = "index.html";
 }
+
+function formatPhoneNumber(event) {
+    const input = event.target;
+    let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+    if (value.length > 10) {
+        value = value.slice(0, 10); // Limit to 10 digits
+    }
+
+    // Format the value as (XXX)-XXX-XXXX
+    if (value.length > 6) {
+        value = `(${value.slice(0, 3)})-${value.slice(3, 6)}-${value.slice(6)}`;
+    } else if (value.length > 3) {
+        value = `(${value.slice(0, 3)})-${value.slice(3)}`;
+    } else {
+        value = `(${value}`;
+    }
+
+    input.value = value;
+}
+
+// Attach the formatPhoneNumber function to the input element
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', formatPhoneNumber);
+    }
+});
