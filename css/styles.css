@@ -86,14 +86,18 @@ body {
 .popup {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
+    margin-top: 20px;
     transform: translate(-50%, -50%);
-    padding: 20px;
+    padding: 40px; /* Increased padding for more internal space */
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
+    border-radius: 10px; /* More rounded corners */
     z-index: 10;
+    width: 400px; /* Set a specific width */
+    height: 300px; /* Set a specific height */
+    box-sizing: border-box; /* Ensure padding is included in the width and height */
 }
 
 .popup-content {
@@ -101,10 +105,18 @@ body {
 }
 
 .close-btn {
-    padding: 5px 10px;
-    cursor: pointer;
-    background-color: #333;
+    position: absolute;
+    top: 10px; /* Adjust the top spacing */
+    right: 10px; /* Adjust the right spacing */
+    background-color: #ec0c0c; /* Light background color */
     color: white;
     border: none;
-    border-radius: 3px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px; /* Rounded corners for the button */
+}
+
+.close-btn:hover {
+    background-color: #860b0b; /* Slightly darker background on hover */
 }

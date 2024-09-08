@@ -11,27 +11,37 @@
     </div> 
     
     <img src="images/contacthead.png" alt="Contact Manager" class="heading-image">
-    <div class="contact-list" id="contactList">
-        <!-- Contacts will be added dynamically here -->
+    <div class="button-container">
+        <button class="account-button" onclick="showAddPopup()">+ Add Contact</button>
     </div>
     
-    <button onclick="showPopup()">Click Me</button>
+    <button onclick="showAddPopup()">Click Me</button>
 
     <!-- Pop-up for displaying the message -->
-    <div class="popup" id="helloPopup">
-        <p>Hello!</p>
-        <button class="close-btn" onclick="closePopup()">Close</button>
+    <div class="popup" id="addContactPopUp">
+        <p>Name:
+            <input type="text" id="firstName" placeholder="First Name"/>
+        </p>
+        <p>Email:
+            <input type="text" id="lastName" placeholder="Last Name"/>
+        </p>
+        <p>Phone:
+            <input type="text" id="lastName" placeholder="Last Name"/>
+        </p>
+        <button class="account-button" onclick="createContact();">Add Contact</button>
+
+        <button class="close-btn" onclick="closePopup()">X</button>
     </div>
 
     <script>
         // Function to show the popup
-        function showPopup() {
-            document.getElementById('helloPopup').style.display = 'block';
+        function showAddPopup() {
+            document.getElementById('addContactPopUp').style.display = 'block';
         }
 
         // Function to close the popup
         function closePopup() {
-            document.getElementById('helloPopup').style.display = 'none';
+            document.getElementById('addContactPopUp').style.display = 'none';
         }
     </script>
 
