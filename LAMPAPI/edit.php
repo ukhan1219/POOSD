@@ -20,15 +20,18 @@
 
         if($stmt->execute()){
 
-            $stmt->close();
-            $conn->close();
-            returnWithError("");
+
+            $response = array("status" => "success", "message" => "Successful Contact Edit");
+            sendResultInfoAsJson(json_encode($response));
 
         } else{
 
             returnWithError($stmt->error);
 
         }
+
+        $stmt->close();
+        $conn->close();
 
     }
 
