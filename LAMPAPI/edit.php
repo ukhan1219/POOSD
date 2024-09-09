@@ -6,6 +6,14 @@
     $name = $inData["name"];
     $phone = $inData["phone"];
     $email = $inData["email"];
+
+    /*
+    if(empty($userId) || !is_numeric($userId)){
+
+        returnWithError("Invalid userId");
+
+    }
+    */
     
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
@@ -16,7 +24,7 @@
     } else {
 
         $stmt = $conn->prepare("UPDATE contacts SET name = ?, phone = ?, email = ? WHERE id = ? LIMIT 1 ");
-        $stmt->bind_param("sssi", $name, $email, $phone, $userId); 
+        $stmt->bind_param("sssi", $name, $email, $phone, $userId); //Maybe remove i
 
         if($stmt->execute()){
 
