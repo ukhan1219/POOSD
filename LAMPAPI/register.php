@@ -10,7 +10,7 @@
 
     $hashPassword = password_hash($password, PASSWORD_BCRYPT);
     
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "connectify");
+    $conn = new mysqli("localhost", "usman", "Usmankhan1", "connectify");
 
     if($conn->connect_error){
 
