@@ -8,6 +8,8 @@
     $password = $inData['password'];
     //$id = $inData['id'];
 
+// LOOKIE HERE
+
     $hashPassword = password_hash($password, PASSWORD_BCRYPT);
     
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "connectify"); 
