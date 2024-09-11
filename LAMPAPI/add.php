@@ -12,7 +12,7 @@ $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $phone, $userID);
     $stmt->execute();
     $stmt->close();
