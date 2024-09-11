@@ -207,7 +207,7 @@ function doRegister() {
 
     let payload = JSON.stringify(tmp);
 
-    let url = urlBase + "LAMPAPI/register.php" + extension;
+    let url = urlBase + "/register.php" + extension;
 
     let xhr = new XMLHttpRequest();
 
