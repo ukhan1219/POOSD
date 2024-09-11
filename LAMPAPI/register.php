@@ -6,14 +6,10 @@
     $lastName = $inData['lastName'];
     $username = $inData['username'];
     $password = $inData['password'];
-    //$id = $inData['id'];
-
-// LOOKIE HERE
-// test again
 
     $hashPassword = password_hash($password, PASSWORD_BCRYPT);
     
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "connectify"); 
+    $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
 
     if($conn->connect_error){
 
