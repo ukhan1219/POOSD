@@ -178,7 +178,7 @@ function createContact() {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(xhr.responseText); // Debugging response
+                // console.log(xhr.responseText); // Debugging response
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
                     document.getElementById("contactAddResult").innerHTML = jsonObject.error;
