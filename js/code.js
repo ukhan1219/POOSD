@@ -182,7 +182,7 @@ function createContact() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                document.getElementById("test").innerHTML = "HELLOOOOO";
+                document.getElementById("test").innerHTML = "jsonObject.error";
                 if (jsonObject.error && jsonObject.error !== "") {
                     
                     document.getElementById("contactAddResult").innerHTML = "jsonObject.error";
@@ -196,7 +196,7 @@ function createContact() {
         xhr.send(payload);
     }
     catch (err) {
-        document.getElementById("contactAddResult").inert = err.message;
+        document.getElementById("contactAddResult").innerHTML = err.message;
     }
 
 }
