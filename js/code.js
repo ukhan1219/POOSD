@@ -166,7 +166,7 @@ function createContact() {
         return;
     }
 
-    let tmp = { name: name, phone: phone, email: email, userID: userID };
+    let tmp = { name: name, phone: phone, email: email, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
