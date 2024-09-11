@@ -1,14 +1,52 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Index Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page</title>
     <script type="text/javascript" src="js/code.js"></script>
 </head>
-<body>
+<body onload="doSearch()">
     <h1>
-        <img src="images/Connectify.png" alt="Logo" style="width: 200x; height: auto">
-    <h1>
+        <img src="images/Connectify.png" alt="Logo" style="width: 200px; height: auto">
+    </h1>
     <p>You are logged in!</p>
+
+    <h2>Contacts</h2>
+    
+    <!-- Contacts Table -->
+    <table id="contacts-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="contacts-body">
+            <!-- Contacts will be displayed here -->
+        </tbody>
+    </table>
+
+    <!-- Contact Form for Adding a New Contact -->
+    <h2>Add a New Contact</h2>
+    <form onsubmit="createContact(); return false;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email" required>
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Enter phone" required>
+        <br>
+        <button type="submit">Add Contact</button>
+    </form>
+
+    <div id="contactAddResult"></div>
+    <div id="contactEditResult"></div>
+    <div id="contactDeleteResult"></div>
+
 </body>
 </html>
