@@ -19,18 +19,22 @@
 
         $stmt = $conn->prepare("INSERT into users (firstName, lastName, username, password) VALUES (?,?,?,?)");
         $stmt->bind_param("ssss", $firstName, $lastName, $username, $password);
-        
-        if($stmt->execute()){
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        returnWithError("");
 
-            $stmt->close();
-            $conn->close();
-            returnWithError("");
+        // if($stmt->execute()){
 
-        } else{
+        //     $stmt->close();
+        //     $conn->close();
+        //     returnWithError("");
 
-            returnWithError($stmt->error);
+        // } else{
 
-        }
+        //     returnWithError($stmt->error);
+
+        // }
 
     }
 
