@@ -14,7 +14,7 @@
     {
         // Prepare the SQL statement to search for contacts by first name, last name, email, or phone
         $searchTerm = "%" . $inData["search"] . "%";
-        $stmt = $conn->prepare("SELECT name, email, phone FROM contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) AND userID = ?");
+        $stmt = $conn->prepare("SELECT name, email, phone FROM contacts WHERE userID = ?");
         $stmt->bind_param("i", $inData["userID"]);
         $stmt->execute();
         
