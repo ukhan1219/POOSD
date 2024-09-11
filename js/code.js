@@ -155,7 +155,6 @@ function createContact() {
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
     document.getElementById("contactAddResult").innerHTML = "";
-    document.getElementById("test").innerHTML = "";
 
     readCookie();
 
@@ -183,10 +182,9 @@ function createContact() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                document.getElementById("test").innerHTML = "jsonObject.error";
                 if (jsonObject.error && jsonObject.error !== "") {
                     
-                    document.getElementById("contactAddResult").innerHTML = "jsonObject.error";
+                    document.getElementById("contactAddResult").innerHTML = jsonObject.err;
                 } else {
                     
                     document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
