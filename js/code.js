@@ -185,7 +185,7 @@ function createContact() {
 
                 if (jsonObject.error && jsonObject.error !== "") {
                     
-                    document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                    document.getElementById("contactAddResult").innerHTML = "jsonObject.error";
                 } else {
                     
                     document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
