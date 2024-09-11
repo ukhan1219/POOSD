@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 } else {
     // Check if a contact with the same email or phone already exists for this user
     $stmt = $conn->prepare("SELECT ID FROM contacts WHERE (email = ? OR phone = ?) AND userID = ?");
-    $stmt->bind_param("sss", $email, $phone, $userID);
+    $stmt->bind_param("ssi", $email, $phone, $userID); // userID should be an integer
     $stmt->execute();
     $stmt->store_result();
 
@@ -24,9 +24,14 @@ if ($conn->connect_error) {
         // Insert the new contact
         $stmt->close();
         $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $name, $email, $phone, $userID);
+        $stmt->bind_param("sssi", $name, $email, $phone, $userID); // Ensure data types match
         $stmt->execute();
-        returnWithError("");  // No error means success
+
+        if ($stmt->affected_rows > 0) {
+            returnWithSuccess("Contact added successfully!");
+        } else {
+            returnWithError("Error adding contact.");
+        }
     }
 
     $stmt->close();
@@ -46,4 +51,8 @@ function returnWithError($err) {
     $retValue = '{"error":"' . $err . '"}';
     sendResultInfoAsJson($retValue);
 }
-?>
+
+function returnWithSuccess($message) {
+    $retValue = '{"message":"' . $message . '"}';
+    sendResultInfoAsJson($retValue);
+}
