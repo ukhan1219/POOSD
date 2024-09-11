@@ -5,7 +5,7 @@
     $searchResults = "";
     $searchCount = 0;
 
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify");
     if ($conn->connect_error) 
     {
         returnWithError( $conn->connect_error );
@@ -14,8 +14,8 @@
     {
         // Prepare the SQL statement to search for contacts by first name, last name, email, or phone
         $searchTerm = "%" . $inData["search"] . "%";
-        $stmt = $conn->prepare("SELECT FirstName, LastName, Email, Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) AND UserId = ?");
-        $stmt->bind_param("sssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm, $inData["userId"]);
+        $stmt = $conn->prepare("SELECT FirstName, LastName, Email, Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) AND userID = ?");
+        $stmt->bind_param("sssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm, $inData["userID"]);
         $stmt->execute();
         
         $result = $stmt->get_result();
