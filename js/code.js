@@ -179,7 +179,7 @@ function createContact() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                if (jsonObject.error && jsonObject.error !== "") {
+                if (jsonObject.err && jsonObject.err !== "") {
                     document.getElementById("contactAddResult").innerHTML = jsonObject.error;
                 } else {
                     document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
