@@ -5,9 +5,9 @@ $name = $inData["name"];
 $email = $inData["email"];
 $phone = $inData["phone"];
 $userID = $inData["userID"];
-$dateCreated = date('Y-m-d H:i:s'); // Current date and time
+// $dateCreated = date('Y-m-d H:i:s'); // Current date and time
 
-$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+$conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
 
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
