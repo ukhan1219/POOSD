@@ -14,8 +14,8 @@
     {
         // Prepare the SQL statement to search for contacts by first name, last name, email, or phone
         $searchTerm = "%" . $inData["search"] . "%";
-        $stmt = $conn->prepare("SELECT FirstName, LastName, Email, Phone FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) AND userID = ?");
-        $stmt->bind_param("sssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm, $inData["userID"]);
+        $stmt = $conn->prepare("SELECT name, email, phone FROM contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) AND userID = ?");
+        $stmt->bind_param("i", $inData["userID"]);
         $stmt->execute();
         
         $result = $stmt->get_result();
@@ -28,7 +28,7 @@
                 $searchResults .= ",";
             }
             $searchCount++;
-            $searchResults .= '{"firstName":"' . $row["FirstName"] . '", "lastName":"' . $row["LastName"] . '", "email":"' . $row["Email"] . '", "phone":"' . $row["Phone"] . '"}';
+            $searchResults .= '{"name":"' . $row["name"] . '", "email":"' . $row["email"] . '", "phone":"' . $row["phone"] . '"}';
         }
         
         if ($searchCount == 0) 
@@ -57,7 +57,7 @@
     
     function returnWithError($err)
     {
-        $retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+        $retValue = '{"id":0,"name":"","error":"' . $err . '"}';
         sendResultInfoAsJson($retValue);
     }
     
