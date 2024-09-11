@@ -181,7 +181,13 @@ function createContact() {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                } else {
+                    document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
+                    doSearch();  // Refresh the contact list
+                }
             }
         };
         xhr.send(payload);
@@ -333,7 +339,7 @@ function formatPhoneNumber(event) {
 }
 
 // Attach the formatPhoneNumber function to the input element
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const phoneInput = document.getElementById('phone');
     if (phoneInput) {
         phoneInput.addEventListener('input', formatPhoneNumber);
