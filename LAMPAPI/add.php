@@ -14,16 +14,10 @@ if ($conn->connect_error) {
 } else {
     $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $phone, $userID);
-    
-    if ($stmt->execute()) {
-        $response = array("status" => "success", "message" => "Contact added successfully");
-        sendResultInfoAsJson(json_encode($response));
-    } else {
-        returnWithError("Failed to add contact");
-    }
-    
+    $stmt->execute();
     $stmt->close();
     $conn->close();
+    returnWithError("");
 }
 
 function getRequestInfo() {
