@@ -8,15 +8,15 @@
 	$lastName = "";
 
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
+    $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
 	if($conn->connect_error){
 
 		returnWithError( $conn->connect_error );
 
 	} else{
 
-		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData["login"], $inData["password"]);
+		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM users WHERE username=? AND password =?");
+		$stmt->bind_param("ss", $inData["username"], $inData["password"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
