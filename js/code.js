@@ -182,7 +182,7 @@ function createContact() {
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
                     document.getElementById("contactAddResult").innerHTML = jsonObject.error;
-                } else {
+                } else if (jsonObject.error && jsonObject.error !== "") {
                     document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
                 }
