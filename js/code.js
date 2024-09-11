@@ -155,6 +155,7 @@ function createContact() {
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
     document.getElementById("contactAddResult").innerHTML = "";
+    document.getElementById("test").innerHTML = "";
 
     readCookie();
 
