@@ -12,8 +12,8 @@ $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
 } else {
-    $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID, dateCreated) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $name, $email, $phone, $userID, $dateCreated);
+    $stmt = $conn->prepare("INSERT INTO contacts (name, email, phone, userID) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $email, $phone, $userID);
     
     if ($stmt->execute()) {
         $response = array("status" => "success", "message" => "Contact added successfully");
