@@ -158,6 +158,9 @@ function createContact() {
 
     readCookie();
 
+    // ADD EXTRA USERID CHECK LOGIN BLOCK>??
+
+
     if (name == "" || phone == "" || email == "") {
         alert("Please fill all fields!");
         return;
@@ -178,10 +181,11 @@ function createContact() {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                // console.log(xhr.responseText); // Debugging response
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
                     document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                } else if (jsonObject.err && jsonObject.err !== "") {
+                    document.getElementById("contactAddResult").innerHTML = jsonObject.err;
                 } else {
                     document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
@@ -193,6 +197,7 @@ function createContact() {
     catch (err) {
         document.getElementById("contactAddResult").innerHTML = err.message;
     }
+
 }
 
 function doRegister() {
