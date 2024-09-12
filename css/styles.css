@@ -173,6 +173,14 @@ p{
     width: 300px;
     margin-top: 300px;
 }
+.form-containerAdd{
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 300px;
+    margin-top: 300px;
+}
 /*Container on the Sign Up Page*/
 .form-containerSignup{
     background-color: white;
