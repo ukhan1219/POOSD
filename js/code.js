@@ -138,9 +138,9 @@ function editContact(contactID) {
 function deleteContact(contactID) {
     readCookie();
     // var confirmDelete = window.confirm("Are you sure you want to delete this contact?");
-    if (confirmDelete == false) {
-        return;
-    }
+    // if (confirmDelete == false) {
+    //     return;
+    // }
     let tmp = { ID: contactID };
     // document.getElementById("contactDeleteResult").innerHTML = "";
 
