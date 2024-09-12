@@ -8,7 +8,6 @@
     $userId = $inData["userID"];
     $dateCreated = date('Y-m-d H:i:s');
 
-    // Connect to the database
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error) 
     {
@@ -16,11 +15,9 @@
     } 
     else
     {
-        // Prepare the SQL statement to delete the contact based on multiple fields
         $stmt = $conn->prepare("DELETE FROM Contacts WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserId=?");
         $stmt->bind_param("sssss", $name, $email, $phone, $userId, $dateCreated);
 
-        // Execute the deletion and check if any rows were affected
         if ($stmt->execute() && $stmt->affected_rows > 0) 
         {
             returnWithSuccess("Contact deleted successfully");

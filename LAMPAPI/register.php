@@ -24,18 +24,6 @@
         $conn->close();
         returnWithError("");
 
-        // if($stmt->execute()){
-
-        //     $stmt->close();
-        //     $conn->close();
-        //     returnWithError("");
-
-        // } else{
-
-        //     returnWithError($stmt->error);
-
-        // }
-
     }
 
     function getRequestInfo() {

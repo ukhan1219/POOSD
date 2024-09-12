@@ -4,20 +4,9 @@ body,html{
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
-/* Two contrasting body styles!!! 
-Centering the content*/
-/*body{
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    background-color: #ffffff;
-}*/
 h2{
     margin-top: 0;
-    font-family: 'Ubuntu', sans-serif; /* Use a custom font for better appearance */
+    font-family: 'Ubuntu', sans-serif; 
     text-align: center;
 }
 input[type="text"], input[type="password"]{
@@ -31,13 +20,14 @@ input[type="text"], input[type="password"]{
 form{
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Add space between form elements */
+    gap: 5px; 
 }
 p{
     margin: 0;
-    font-family: 'Ubuntu', sans-serif; /* Use a custom font for better appearance */
+    font-family: 'Ubuntu', sans-serif; 
 }
-/*Style for the black bar at the top*/
+
+/* main bar for home page  */
 .top-bar{
     background-color: black;
     width: 100%;
@@ -46,9 +36,8 @@ p{
     top: 0;
     left: 0;
 }
-/*Spacing below the black bar*/
 .content{
-    margin-top: 60px; /* Pushes content below the black bar */
+    margin-top: 60px; 
     text-align: center;
 }
 .header {
@@ -63,12 +52,12 @@ p{
     justify-content: center;
     height: 75%;
 }
-/*Button container on Home Page*/
+
+/* container for button  */
 .buttonContainer{
     display: flex;
     gap: 50px;
 }
-/*Style for buttons on Home Page*/
 .buttonHome{
     width: 150px;
     height: 50px;
@@ -83,7 +72,8 @@ p{
 .buttonHome:hover{
     background-color: #19ad66;
 }
-/*Style for buttons on Login Page & Sign Up Page*/
+
+/* signup button style  */
 .buttonSignup{
     width: 300px;
     height: 40px;
@@ -99,7 +89,8 @@ p{
 .buttonSignup:hover{
     background-color: #19ad66;
 }
-/*Style for cancel button*/
+
+/* cancel button style  */
 .butonCancelSignup{
     margin: 10px 0;
     width: 300px;
@@ -116,14 +107,12 @@ p{
 .butonCancelSignup:hover{
     background-color: #e20000;
 }
-/*Style for buttons on Contacts Page*/
 .button-container {
     margin-top: 20px;
 }
 .account-button:hover{
     background-color: darkgreen;
 }
-/*Style for button on */
 .account-button {
     padding: 15px 30px;
     font-size: 18px;
@@ -134,11 +123,10 @@ p{
     margin: 10px;
     border-radius: 5px;
 }
-/*Style for logout button on Contacts Page*/
 .logout-btn{
     position: absolute;
     top: 50%;
-    right: 40px; /* Adjust distance from the right edge as needed */
+    right: 40px; 
     transform: translateY(-50%);
     background-color: white;
     color: black;
@@ -148,13 +136,12 @@ p{
     font-size: 18px;
     border-radius: 5px;
     margin: 10px;
-    align-items: center; /* Vertically centers items */
+    align-items: center; 
 }
 .logout-btn:hover{
     background-color: grey;
     color: white;
 }
-/*Style for Connectify logo on all pages*/
 .logo{
     max-width: 250%;
     height: auto;
@@ -164,43 +151,40 @@ p{
     top: 100px;
     margin-bottom: 100px;
 }
-/*Container on the Login Page*/
+
+/* styling for contact add container  */
 .form-containerAdd {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 66%; /* 2/3 of the screen */
-    max-width: 1000px; /* Optional: prevent it from becoming too wide */
-    margin: 50px auto; /* Center the form horizontally */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    width: 66%; 
+    max-width: 1000px; 
+    margin: 50px auto; 
+    box-sizing: border-box; 
 }
 
-/* Horizontal form layout */
+/* styling to make the form horizontal  */
 .horizontal-form {
     display: flex;
     flex-direction: row;
-    gap: 15px; /* Adjust spacing between form elements */
+    gap: 15px; 
     align-items: center;
-    justify-content: center; /* Ensure form elements are centered */
-    flex-wrap: wrap; /* Wrap inputs if the screen is too narrow */
+    justify-content: center; 
+    flex-wrap: wrap;
 }
 
-/* Grouping each form element */
 .horizontal-form .form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-/* Input fields */
 .horizontal-form input[type="text"] {
-    width: 180px; /* Adjust the width of input fields */
-    padding: 8px; /* Add some padding inside the input */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    width: 180px; 
+    padding: 8px;
+    box-sizing: border-box; 
 }
-
-/* Button styling */
 .horizontal-form button {
     padding: 10px 20px;
     background-color: #0f6b3f;
@@ -210,11 +194,11 @@ p{
     cursor: pointer;
 }
 
-/* Hover effect for buttons */
 .horizontal-form button:hover {
     background-color: #19ad66;
 }
 
+/* login form container styling  */
 .form-containerLogin{
     background-color: white;
     padding: 40px;
@@ -223,7 +207,8 @@ p{
     width: 300px;
     margin-top: 300px;
 }
-/*Container on the Sign Up Page*/
+
+/* signup form container styling  */
 .form-containerSignup{
     background-color: white;
     padding: 40px;
@@ -232,7 +217,6 @@ p{
     width: 300px;
     margin-top: 300px;
 }
-/*Style for header images*/
 .headerImg{
     width: 70%;
     height: auto;
@@ -240,11 +224,9 @@ p{
     justify-content: center;
     align-items: center;
 }
-/*Container for password on forms*/
 .password-container{
     position: relative;
 }
-/*Styles password for visibilty on forms*/
 .toggle-password{
     position: absolute;
     right: 0;
@@ -258,20 +240,19 @@ p{
 .toggle-password:focus{
     outline: none;
 }
-/*Style for list on Contacts Page*/
 .contact-list{
     padding: 20px;
-    max-width: 600px; /* Adjust as needed */
+    max-width: 600px; 
     margin: auto;
 }
 .contact-item{
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Grey thin line */
+    border-bottom: 1px solid #ddd; 
 }
 .contact-item:last-child{
-    border-bottom: none; /* Remove the line after the last item */
+    border-bottom: none; 
 }
-/*Style for popups on Contacts Page*/
+
 .popup{
     display: none;
     position: fixed;
@@ -289,62 +270,61 @@ p{
 .popup-content{
     margin-bottom: 15px;
 }
-/*Style button to close popup on Contacts Page*/
+
 .close-btn{
     position: absolute;
-    top: 10px; /* Adjust the top spacing */
-    right: 10px; /* Adjust the right spacing */
-    background-color: #ec0c0c; /* Light background color */
+    top: 10px; 
+    right: 10px; 
+    background-color: #ec0c0c; 
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
-    border-radius: 5px; /* Rounded corners for the button */
+    border-radius: 5px; 
 }
 .close-btn:hover{
-    background-color: #860b0b; /* Slightly darker background on hover */
+    background-color: #860b0b;
 }
-/* Styles for the Contacts Table */
+
+/* styling for contact table  */
 .containerTable {
-    width: 66%; /* Match the form width */
-    max-width: 1000px; /* Prevent it from becoming too wide */
-    margin: 50px auto; /* Center the container */
+    width: 66%; 
+    max-width: 1000px;
+    margin: 50px auto;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Box shadow for the container */
-    box-sizing: border-box; /* Ensure padding doesn’t affect the width */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-sizing: border-box; 
 }
 
 #contacts-table {
     width: 100%;
-    border-collapse: collapse; /* Remove spacing between table cells */
+    border-collapse: collapse; 
     margin-top: 20px;
 }
 
 #contacts-table th, #contacts-table td {
-    padding: 10px 15px; /* Add padding for table cells */
+    padding: 10px 15px; 
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Separate rows with a light border */
+    border-bottom: 1px solid #ddd;
 }
 
 #contacts-table th {
-    background-color: #f0f0f0; /* Light background for header row */
+    background-color: #f0f0f0; 
     font-weight: bold;
 }
 
 #contacts-table td {
-    vertical-align: middle; /* Align content in the middle of the cell */
+    vertical-align: middle; 
 }
 
-/* Adjusting table column width dynamically */
 #contacts-table td, #contacts-table th {
-    width: auto; /* Allow columns to adjust based on content */
-    white-space: nowrap; /* Prevent text from wrapping */
+    width: auto; 
+    white-space: nowrap; 
 }
 
-/* Button Styles in the Table */
 .action-btn {
     padding: 8px 12px;
     background-color: #0f6b3f;
@@ -360,22 +340,9 @@ p{
     background-color: #19ad66;
 }
 
-/* Hover effect for rows */
 #contacts-table tr:hover {
-    background-color: #f9f9f9; /* Light background when hovering */
+    background-color: #f9f9f9; 
 }
-
-/* For mobile responsiveness */
-@media (max-width: 768px) {
-    #contacts-table th, #contacts-table td {
-        padding: 8px 10px;
-    }
-
-    .container {
-        width: 90%; /* Make the container width flexible */
-    }
-}
-
 
 #loginResult {
     margin-top: 10px;

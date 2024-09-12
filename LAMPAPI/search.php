@@ -12,7 +12,6 @@
     } 
     else
     {
-        // Prepare the SQL statement to search for contacts by first name, last name, email, or phone
         $searchTerm = "%" . $inData["search"] . "%";
         $stmt = $conn->prepare("SELECT name, email, phone FROM contacts WHERE userID = ?");
         $stmt->bind_param("i", $inData["userID"]);
@@ -20,7 +19,6 @@
         
         $result = $stmt->get_result();
         
-        // Building the search results as a JSON array
         while($row = $result->fetch_assoc())
         {
             if ($searchCount > 0) 
