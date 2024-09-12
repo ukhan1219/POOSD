@@ -173,14 +173,49 @@ p{
     width: 300px;
     margin-top: 300px;
 }
-.form-containerAdd{
+/* Adjust the Add Contact form margin to make it higher on the page */
+.form-containerAdd {
     background-color: white;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     width: 300px;
-    margin-top: 5px;
+    margin-top: 50px; /* Adjust this as needed */
 }
+
+/* Horizontal form layout */
+.horizontal-form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px; /* Spacing between form elements */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.horizontal-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.horizontal-form input[type="text"] {
+    width: 200px; /* Adjust width to fit horizontal layout */
+}
+
+.horizontal-form button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #0f6b3f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.horizontal-form button:hover {
+    background-color: #19ad66;
+}
+
 /*Container on the Sign Up Page*/
 .form-containerSignup{
     background-color: white;
