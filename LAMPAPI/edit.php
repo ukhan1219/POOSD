@@ -7,7 +7,7 @@
     $phone = $inData["phone"];
     $email = $inData["email"];
     
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
 
     if($conn->connect_error){
 

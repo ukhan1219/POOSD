@@ -8,7 +8,7 @@
     $userId = $inData["userID"];
     $dateCreated = date('Y-m-d H:i:s');
 
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
     if ($conn->connect_error) 
     {
         returnWithError( $conn->connect_error );
