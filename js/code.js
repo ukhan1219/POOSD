@@ -61,7 +61,7 @@ function doSearch() {
                     let contact = contacts[i];
                     let row = document.createElement("tr");
                     row.innerHTML = `
-                    <td>${contact.name}</td>
+                    <td>${contact.email}</td>
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>
