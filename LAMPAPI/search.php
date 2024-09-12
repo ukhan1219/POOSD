@@ -13,7 +13,7 @@
     else
     {
         $searchTerm = "%" . $inData["search"] . "%";
-        $stmt = $conn->prepare("SELECT name, email, phone FROM contacts WHERE userID = ?");
+        $stmt = $conn->prepare("SELECT ID, name, email, phone FROM contacts WHERE userID = ?");
         $stmt->bind_param("i", $inData["userID"]);
         $stmt->execute();
         
@@ -26,7 +26,7 @@
                 $searchResults .= ",";
             }
             $searchCount++;
-            $searchResults .= '{"name":"' . $row["name"] . '", "email":"' . $row["email"] . '", "phone":"' . $row["phone"] . '"}';
+            $searchResults .= '{"ID":"' . $row["ID"] . '", "name":"' . $row["name"] . '", "email":"' . $row["email"] . '", "phone":"' . $row["phone"] . '"}';
         }
         
         if ($searchCount == 0) 
