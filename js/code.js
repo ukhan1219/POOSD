@@ -67,7 +67,6 @@ function doSearch() {
                     <td>
                         <button class="edit-btn" onclick="editContact(${contact.ID})">Edit</button>
                         <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
-                        <h1>${contact.ID}</h1>
                     </td>
                 `;
                     contactsBody.appendChild(row);
