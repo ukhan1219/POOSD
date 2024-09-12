@@ -209,6 +209,9 @@ function createContact() {
                     showToast("Contact has been created successfully!");
                     // document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("phone").value = "";
                 }
             }
         };
