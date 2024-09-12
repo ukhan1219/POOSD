@@ -165,45 +165,43 @@ p{
     margin-bottom: 100px;
 }
 /*Container on the Login Page*/
-.form-containerLogin{
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 300px;
-    margin-top: 300px;
-}
-/* Adjust the Add Contact form margin to make it higher on the page */
 .form-containerAdd {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: flex;
-    margin-top: 50px; /* Adjust this as needed */
+    width: 66%; /* 2/3 of the screen */
+    max-width: 1000px; /* Optional: prevent it from becoming too wide */
+    margin: 50px auto; /* Center the form horizontally */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 /* Horizontal form layout */
 .horizontal-form {
     display: flex;
     flex-direction: row;
-    gap: 5px; /* Spacing between form elements */
+    gap: 15px; /* Adjust spacing between form elements */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Ensure form elements are centered */
+    flex-wrap: wrap; /* Wrap inputs if the screen is too narrow */
 }
 
+/* Grouping each form element */
 .horizontal-form .form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
+/* Input fields */
 .horizontal-form input[type="text"] {
-    width: 200px; /* Adjust width to fit horizontal layout */
+    width: 180px; /* Adjust the width of input fields */
+    padding: 8px; /* Add some padding inside the input */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
+/* Button styling */
 .horizontal-form button {
-    margin-left: 10px;
     padding: 10px 20px;
     background-color: #0f6b3f;
     color: white;
@@ -212,6 +210,7 @@ p{
     cursor: pointer;
 }
 
+/* Hover effect for buttons */
 .horizontal-form button:hover {
     background-color: #19ad66;
 }
