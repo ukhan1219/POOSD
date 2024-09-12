@@ -263,6 +263,14 @@ p{
 .close-btn:hover{
     background-color: #860b0b; /* Slightly darker background on hover */
 }
+.contacts-table-container {
+    margin-top: 50px; /* Adjust this value as needed */
+    padding: 20px;
+    background-color: white; /* Ensure the background matches the theme */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better visibility */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
 #loginResult {
     margin-top: 10px;
     color: red;
