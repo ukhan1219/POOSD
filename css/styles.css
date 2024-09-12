@@ -368,3 +368,11 @@ p{
     align-items: center;
     margin-top: 5px;
 }
+
+html, body {
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
