@@ -18,22 +18,24 @@
 
 
     <!-- Contact Form for Adding a New Contact -->
-    <main class="form-containerAdd">
-        <h2>Add a New Contact</h2>
+    <div class="container">
+        <main class="form-containerAdd">
+            <h2>Add a New Contact</h2>
 
-        <form onsubmit="createContact(); return false;">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Name" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="text" id="email" placeholder="Email" required>
-            <br>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" placeholder="Phone" required>
-            <br>
-            <button type="submit">Add Contact</button>
-        </form>
-    </main>
+            <form onsubmit="createContact(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" placeholder="Email" required>
+                <br>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" placeholder="Phone" required>
+                <br>
+                <button type="submit">Add Contact</button>
+            </form>
+        </main>
+    </div>
     <div id="contactAddResult"></div>
     <div id="contactEditResult"></div>
     <div id="contactDeleteResult"></div>
