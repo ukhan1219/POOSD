@@ -32,6 +32,20 @@ let lastName = "";
 // <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
 
 
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    toastMessage.textContent = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('visible');
+
+    setTimeout(() => {
+        toast.classList.remove('visible');
+        toast.classList.add('hidden');
+    }, 3000);
+}
+
 
 function doSearch() {
     readCookie();
@@ -87,7 +101,7 @@ function editContact(contactID) {
     let email = prompt("Enter new email:");
     let phone = prompt("Enter new phone:");
 
-    document.getElementById("contactEditResult").innerHTML = "";
+    // document.getElementById("contactEditResult").innerHTML = "";
 
     if (name == "" || email == "" || phone == "") {
         alert("Please fill all fields!");
@@ -110,7 +124,8 @@ function editContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
-                document.getElementById("contactEditResult").innerHTML = "Contact has been edited successfully!";
+                showToast("Contact has been edited successfully!");
+                // document.getElementById("contactEditResult").innerHTML = "Contact has been edited successfully!";
             }
         };
         xhr.send(payload);
@@ -122,9 +137,12 @@ function editContact(contactID) {
 
 function deleteContact(contactID) {
     readCookie();
-
+    var confirmDelete = confirm("Are you sure you want to delete this contact?");
+    if (confirmDelete == false) {
+        return;
+    }
     let tmp = { ID: contactID };
-    document.getElementById("contactDeleteResult").innerHTML = "";
+    // document.getElementById("contactDeleteResult").innerHTML = "";
 
     let payload = JSON.stringify(tmp);
 
@@ -140,7 +158,8 @@ function deleteContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
-                document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
+                showToast("Contact has been deleted successfully!");
+                // document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
             }
         };
         xhr.send(payload);
@@ -154,7 +173,7 @@ function createContact() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
-    document.getElementById("contactAddResult").innerHTML = "";
+    // document.getElementById("contactAddResult").innerHTML = "";
 
     readCookie();
 
@@ -183,11 +202,11 @@ function createContact() {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
-                    
-                    document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                    showToast(jsonObject.error);
+                    // document.getElementById("contactAddResult").innerHTML = jsonObject.error;
                 } else {
-                    
-                    document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
+                    showToast("Contact has been created successfully!");
+                    // document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
                 }
             }

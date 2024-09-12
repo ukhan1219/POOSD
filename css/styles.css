@@ -1,15 +1,19 @@
-body,html{
+body,
+html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
-h2{
+
+h2 {
     margin-top: 0;
-    font-family: 'Ubuntu', sans-serif; 
+    font-family: 'Ubuntu', sans-serif;
     text-align: center;
 }
-input[type="text"], input[type="password"]{
+
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -17,18 +21,20 @@ input[type="text"], input[type="password"]{
     border-radius: 4px;
     box-sizing: border-box;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
-    gap: 5px; 
+    gap: 5px;
 }
-p{
+
+p {
     margin: 0;
-    font-family: 'Ubuntu', sans-serif; 
+    font-family: 'Ubuntu', sans-serif;
 }
 
 /* main bar for home page  */
-.top-bar{
+.top-bar {
     background-color: black;
     width: 100%;
     height: 90px;
@@ -36,16 +42,19 @@ p{
     top: 0;
     left: 0;
 }
-.content{
-    margin-top: 60px; 
+
+.content {
+    margin-top: 60px;
     text-align: center;
 }
+
 .header {
     width: 100%;
     padding: 20px 0;
     text-align: center;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,11 +63,12 @@ p{
 }
 
 /* container for button  */
-.buttonContainer{
+.buttonContainer {
     display: flex;
     gap: 50px;
 }
-.buttonHome{
+
+.buttonHome {
     width: 150px;
     height: 50px;
     padding: 10px;
@@ -69,32 +79,36 @@ p{
     cursor: pointer;
     font-size: 20px;
 }
-.buttonHome:hover{
+
+.buttonHome:hover {
     background-color: #19ad66;
 }
-.buttonLogout{
-    position : absolute;
+
+.buttonLogout {
+    position: absolute;
     top: 10px;
     right: 10px;
     width: 150px;
     height: 40px;
     padding: 10px;
-    background-color:#0f6b3f;
+    background-color: #0f6b3f;
     color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
+
 .buttonLogout:hover {
     background-color: #19ad66;
 }
+
 /* signup button style  */
-.buttonSignup{
+.buttonSignup {
     width: 300px;
     height: 40px;
     padding: 10px;
-    background-color:#0f6b3f;
+    background-color: #0f6b3f;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -102,33 +116,38 @@ p{
     font-size: 16px;
     margin-top: 10px;
 }
-.buttonSignup:hover{
+
+.buttonSignup:hover {
     background-color: #19ad66;
 }
 
 /* cancel button style  */
-.butonCancelSignup{
+.butonCancelSignup {
     margin: 10px 0;
     width: 300px;
     height: 40px;
     padding: 10px;
-    background-color:#b30000;
+    background-color: #b30000;
     color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px; 
+    font-size: 16px;
     margin-top: 10px;
 }
-.butonCancelSignup:hover{
+
+.butonCancelSignup:hover {
     background-color: #e20000;
 }
+
 .button-container {
     margin-top: 20px;
 }
-.account-button:hover{
+
+.account-button:hover {
     background-color: darkgreen;
 }
+
 .account-button {
     padding: 15px 30px;
     font-size: 18px;
@@ -139,10 +158,11 @@ p{
     margin: 10px;
     border-radius: 5px;
 }
-.logout-btn{
+
+.logout-btn {
     position: absolute;
     top: 50%;
-    right: 40px; 
+    right: 40px;
     transform: translateY(-50%);
     background-color: white;
     color: black;
@@ -152,13 +172,15 @@ p{
     font-size: 18px;
     border-radius: 5px;
     margin: 10px;
-    align-items: center; 
+    align-items: center;
 }
-.logout-btn:hover{
+
+.logout-btn:hover {
     background-color: grey;
     color: white;
 }
-.logo{
+
+.logo {
     max-width: 250%;
     height: auto;
     justify-content: center;
@@ -173,20 +195,20 @@ p{
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 66%; 
-    max-width: 1000px; 
-    margin: 50px auto; 
-    box-sizing: border-box; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 66%;
+    max-width: 1000px;
+    margin: 50px auto;
+    box-sizing: border-box;
 }
 
 /* styling to make the form horizontal  */
 .horizontal-form {
     display: flex;
     flex-direction: row;
-    gap: 15px; 
+    gap: 15px;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -197,10 +219,11 @@ p{
 }
 
 .horizontal-form input[type="text"] {
-    width: 180px; 
+    width: 180px;
     padding: 8px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
+
 .horizontal-form button {
     padding: 10px 20px;
     background-color: #0f6b3f;
@@ -215,35 +238,38 @@ p{
 }
 
 /* login form container styling  */
-.form-containerLogin{
+.form-containerLogin {
     background-color: white;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
     margin-top: 300px;
 }
 
 /* signup form container styling  */
-.form-containerSignup{
+.form-containerSignup {
     background-color: white;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
     margin-top: 350px;
 }
-.headerImg{
+
+.headerImg {
     width: 70%;
     height: auto;
     overflow: hidden;
     justify-content: center;
     align-items: center;
 }
-.password-container{
+
+.password-container {
     position: relative;
 }
-.toggle-password{
+
+.toggle-password {
     position: absolute;
     right: 0;
     top: 0;
@@ -253,23 +279,27 @@ p{
     background: transparent;
     cursor: pointer;
 }
-.toggle-password:focus{
+
+.toggle-password:focus {
     outline: none;
 }
-.contact-list{
+
+.contact-list {
     padding: 20px;
-    max-width: 600px; 
+    max-width: 600px;
     margin: auto;
 }
-.contact-item{
+
+.contact-item {
     padding: 10px;
-    border-bottom: 1px solid #ddd; 
-}
-.contact-item:last-child{
-    border-bottom: none; 
+    border-bottom: 1px solid #ddd;
 }
 
-.popup{
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -283,62 +313,66 @@ p{
     width: 400px;
     box-sizing: border-box;
 }
-.popup-content{
+
+.popup-content {
     margin-bottom: 15px;
 }
 
-.close-btn{
+.close-btn {
     position: absolute;
-    top: 10px; 
-    right: 10px; 
-    background-color: #ec0c0c; 
+    top: 10px;
+    right: 10px;
+    background-color: #ec0c0c;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
-.close-btn:hover{
+
+.close-btn:hover {
     background-color: #860b0b;
 }
 
 /* styling for contact table  */
 .containerTable {
-    width: 66%; 
+    width: 66%;
     max-width: 1000px;
     margin: 50px auto;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    box-sizing: border-box; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 #contacts-table {
     width: 100%;
-    border-collapse: collapse; 
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-#contacts-table th, #contacts-table td {
-    padding: 10px 15px; 
+#contacts-table th,
+#contacts-table td {
+    padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
 #contacts-table th {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
     font-weight: bold;
 }
 
 #contacts-table td {
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
-#contacts-table td, #contacts-table th {
-    width: auto; 
-    white-space: nowrap; 
+#contacts-table td,
+#contacts-table th {
+    width: auto;
+    white-space: nowrap;
 }
 
 .edit-btn {
@@ -366,18 +400,20 @@ p{
     font-size: 14px;
     margin: 0 5px;
 }
+
 .delete-btn:hover {
-    background-color:#e20000 ;
+    background-color: #e20000;
 }
 
 #contacts-table tr:hover {
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
 }
 
 #loginResult {
     margin-top: 10px;
     color: red;
 }
+
 #contactAddResult {
     display: flex;
     justify-content: center;
@@ -385,7 +421,37 @@ p{
     margin-top: 5px;
 }
 
-html, body {
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.hidden {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+/* Toast message */
+.toast-message {
+    font-size: 16px;
+}
+
+html,
+body {
     overflow-x: hidden;
 }
 
