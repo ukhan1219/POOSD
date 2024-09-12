@@ -2,11 +2,7 @@
 
     $inData = getRequestInfo();
     
-    $name = $inData["name"];
-    $email = $inData["email"];
-    $phone = $inData["phone"];
-    $userId = $inData["userID"];
-    $dateCreated = date('Y-m-d H:i:s');
+    $ID = $inData["ID"];
 
     $conn = new mysqli("localhost", "API", "APIPASSWORD", "connectify"); 
     if ($conn->connect_error) 
@@ -15,20 +11,13 @@
     } 
     else
     {
-        $stmt = $conn->prepare("DELETE FROM Contacts WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserId=?");
-        $stmt->bind_param("sssss", $name, $email, $phone, $userId, $dateCreated);
-
-        if ($stmt->execute() && $stmt->affected_rows > 0) 
-        {
-            returnWithSuccess("Contact deleted successfully");
-        } 
-        else 
-        {
-            returnWithError("No contact found with the provided details");
-        }
-
+        $stmt = $conn->prepare("DELETE FROM contacts WHERE ID = ?");
+        $stmt->bind_param("s", $ID);
+        $stmt->execute();
         $stmt->close();
         $conn->close();
+
+        returnWithError("");
     }
 
     function getRequestInfo()
