@@ -96,10 +96,10 @@ function doSearch() {
 
 function editContact(contactID) {
     readCookie();
-
-    let name = prompt("Enter new name:");
-    let email = prompt("Enter new email:");
-    let phone = prompt("Enter new phone:");
+    window.location.href="edit.html";
+    // let name = prompt("Enter new name:");
+    // let email = prompt("Enter new email:");
+    // let phone = prompt("Enter new phone:");
 
     // document.getElementById("contactEditResult").innerHTML = "";
 
