@@ -66,7 +66,7 @@ function doSearch() {
                     <td>${contact.phone}</td>
                     <td>
                         <button class="edit-btn" onclick="editContact(${contact.ID})">Edit</button>
-                        <form onsubmit="deleteContact(${contact.ID}); return false;">
+                        <form onsubmit="deleteContact(${contact.ID});">
                             <button class="delete-btn" type="submit">Delete</button>
                         </form>
                     </td>
