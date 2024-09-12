@@ -139,8 +139,13 @@ function deleteContact(contactID) {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                doSearch();
-                document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
+                let response = JSON.parse(xhr.responseText);
+                if (response.error && response.error !== "") {
+                    document.getElementById("contactDeleteResult").innerHTML = "Error: " + response.error;
+                } else {
+                    doSearch(); 
+                    document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
+                }
             }
         };
         xhr.send(payload);
