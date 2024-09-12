@@ -302,3 +302,8 @@ p{
     margin-top: 10px;
     color: red;
 }
+#contactAddResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
