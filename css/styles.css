@@ -325,7 +325,7 @@ p{
     white-space: nowrap; 
 }
 
-.action-btn {
+.edit-btn {
     padding: 8px 12px;
     background-color: #0f6b3f;
     color: white;
@@ -336,8 +336,22 @@ p{
     margin: 0 5px;
 }
 
-.action-btn:hover {
+.edit-btn:hover {
     background-color: #19ad66;
+}
+
+.delete-btn {
+    padding: 8px 12px;
+    background-color: #b30000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+}
+.delete-btn:hover {
+    background-color:#e20000 ;
 }
 
 #contacts-table tr:hover {
