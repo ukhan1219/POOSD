@@ -137,9 +137,9 @@ function editContact(contactID) {
 
 function deleteContact(contactID) {
     readCookie();
-    var isConfirmed = window.confirm("Are you sure you want to delete this contact?");
+    var confirmDel = window.confirm("Are you sure you want to delete this contact?");
 
-    if (!isConfirmed) {
+    if (confirmDel==0) {
         return;
     }
     let tmp = { ID: contactID };
