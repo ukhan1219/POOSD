@@ -174,7 +174,7 @@ function createContact() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
-    document.getElementById("contactAddResult").innerHTML = "";
+    // document.getElementById("contactAddResult").innerHTML = "";
 
     readCookie();
 
@@ -203,11 +203,11 @@ function createContact() {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
-                    // showToast(jsonObject.error);
-                    document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                    showToast(jsonObject.error);
+                    // document.getElementById("contactAddResult").innerHTML = jsonObject.error;
                 } else {
-                    // showToast("Contact has been created successfully!");
-                    document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
+                    showToast("Contact has been created successfully!");
+                    // document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
                 }
             }
