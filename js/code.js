@@ -61,12 +61,14 @@ function doSearch() {
                     let contact = contacts[i];
                     let row = document.createElement("tr");
                     row.innerHTML = `
-                    <td>${contact.email}</td>
+                    <td>${contact.name}</td>
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>
                         <button class="edit-btn" onclick="editContact(${contact.ID})">Edit</button>
-                        <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
+                        <form onsubmit="deleteContact(${contact.ID}); return false;">
+                            <button class="delete-btn" type="submit">Delete</button>
+                        </form>
                     </td>
                 `;
                     contactsBody.appendChild(row);
