@@ -439,6 +439,10 @@ p {
     display: none;
 }
 
+.font-bold {
+    font-weight: bold;
+}
+
 #loginResult {
     margin-top: 10px;
     color: red;
