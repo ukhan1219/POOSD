@@ -86,7 +86,7 @@ function cancelEdit(contactID) {
 
 //  save the changes the user made to the contact
 function saveContact(contactID) {
-     // document.getElementById("contactEditResult").innerHTML = "";
+    document.getElementById("contactEditResult").innerHTML = "";
     let row = document.querySelector(`tr[data-id="${contactID}"]`);
     let name = row.querySelector('.edit-name').value;
     let email = row.querySelector('.edit-email').value;
@@ -110,8 +110,7 @@ function saveContact(contactID) {
                 row.querySelector('.contact-email').textContent = email;
                 row.querySelector('.contact-phone').textContent = phone;
 
-                showToast("Contact has been edited successfully!");
-                 // document.getElementById("contactEditResult").innerHTML = "";
+                document.getElementById("contactEditResult").innerHTML = "";
             }
         };
         xhr.send(payload);
@@ -149,8 +148,7 @@ function deleteContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
-                showToast("Contact has been deleted successfully!");
-                // document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
+                document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
             }
         };
         xhr.send(payload);
@@ -192,11 +190,9 @@ function createContact() {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error && jsonObject.error !== "") {
-                    showToast(jsonObject.error);
-                    // document.getElementById("contactAddResult").innerHTML = jsonObject.error;
+                    document.getElementById("contactAddResult").innerHTML = jsonObject.error;
                 } else {
-                    showToast("Contact has been created successfully!");
-                    // document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
+                    document.getElementById("contactAddResult").innerHTML = "Contact has been added successfully!";
                     doSearch();
                     document.getElementById("name").value = "";
                     document.getElementById("email").value = "";
