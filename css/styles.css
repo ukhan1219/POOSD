@@ -395,6 +395,10 @@ p {
     vertical-align: middle;
 }
 
+contacts-table tr:hover {
+    background-color: #f9f9f9;
+}
+
 #contacts-table td,
 #contacts-table th {
     width: auto;
@@ -442,6 +446,7 @@ p {
     align-items: center;
     margin-top: 5px;
 }
+
 
 .toast {
     position: fixed;
