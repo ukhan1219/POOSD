@@ -119,7 +119,7 @@ function editContact() {
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
 
-    let tmp = { ID: contactToEdit.IDm , name: name, email: email, phone: phone, userID, userID };
+    let tmp = { ID: contactToEdit.ID , name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
