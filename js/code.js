@@ -87,6 +87,9 @@ function doSearch() {
                 `;
                     contactsBody.appendChild(row);
                 }
+                if (callback) {
+                    callback();
+                }
             }
         };
         xhr.send(payload);
@@ -108,26 +111,25 @@ window.onload = function () {
 function editContactRedirect(contactID) {
     readCookie();
 
-    let contactToEdit =  contacts.find(contact => contact.ID === contactID);
-
-    if (!contactToEdit) {
-        alert('Contact not found!');
-        return;
-    }
-
-    localStorage.setItem("editContact", JSON.stringify(contactToEdit));
-
-    window.location.href = "edit.html";
+    doSearch(() => {
+        let contactToEdit = contacts.find(contact => contact.ID === contactID);
+        if (!contactToEdit) {
+            alert('Contact not found!');
+            return;
+        }
+        localStorage.setItem("editContact", JSON.stringify(contactToEdit));
+        window.location.href = "edit.html";
+    });
 }
 
 function editContact() {
-    let  contactToEdit = JSON.parse(localStorage.getItem("editContact"));
+    let contactToEdit = JSON.parse(localStorage.getItem("editContact"));
 
-    let name =  document.getElementById("name").value;
+    let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
 
-    let tmp = { ID: contactToEdit.ID , name: name, email: email, phone: phone, userID, userID };
+    let tmp = { ID: contactToEdit.ID, name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
@@ -141,10 +143,10 @@ function editContact() {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                window.location.href = "account.html";    
+                window.location.href = "account.html";
                 doSearch();
 
-                
+
                 showToast("Contact has been edited successfully!");
             }
         };
@@ -162,7 +164,7 @@ function deleteContact(contactID) {
     readCookie();
     var confirmDel = window.confirm("Are you sure you want to delete this contact?");
 
-    if (confirmDel==0) {
+    if (confirmDel == 0) {
         return;
     }
     let tmp = { ID: contactID };
