@@ -235,7 +235,7 @@ p {
     box-sizing: border-box;
 }
 
-.horizontal-form button {
+.confirmButton {
     padding: 10px 20px;
     background-color: #0f6b3f;
     color: white;
@@ -244,7 +244,7 @@ p {
     cursor: pointer;
 }
 
-.horizontal-form button:hover {
+.confirmButton:hover {
     background-color: #19ad66;
 }
 
