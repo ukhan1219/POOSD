@@ -7,6 +7,8 @@ const extension = 'php'
 let userID = 0;
 let firstName = "";
 let lastName = "";
+let contacts  = [];
+
 
 
 // NEED SAVE EDIT OR CANCEL EDIT?
@@ -66,7 +68,7 @@ function doSearch() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                let contacts = jsonObject.results;
+                contacts = jsonObject.results;
 
                 let contactsBody = document.getElementById("contacts-body");
                 contactsBody.innerHTML = "";
@@ -96,14 +98,27 @@ function doSearch() {
 
 function editContact(contactID) {
     readCookie();
-    window.location.href="edit.html";
-    // let name = prompt("Enter new name:");
-    // let email = prompt("Enter new email:");
-    // let phone = prompt("Enter new phone:");
+
+    let contactToEdit =  '';
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].ID === contactID){
+            contactToEdit = contacts[i];
+            break;
+        }
+    }
+
+    localStorage.setItem("editContact", JSON.stringify(contactToEdit));
+
+    window.location.href = "edit.html";
+
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
 
     // document.getElementById("contactEditResult").innerHTML = "";
 
-    let tmp = { ID: contactID, name: name, email: email, phone: phone, userID, userID };
+    let tmp = { ID: contactToEdit.ID, name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
@@ -119,6 +134,7 @@ function editContact(contactID) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
+                window.location.href = "account.html";
                 showToast("Contact has been edited successfully!");
                 // document.getElementById("contactEditResult").innerHTML = "Contact has been edited successfully!";
             }

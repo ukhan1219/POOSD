@@ -2,7 +2,7 @@
 <?php
     $inData = getRequestInfo();
 
-    $userID = $inData["userID"];
+    $ID = $inData["ID"];
     $name = $inData["name"];
     $phone = $inData["phone"];
     $email = $inData["email"];
@@ -16,7 +16,7 @@
     } else {
 
         $stmt = $conn->prepare("UPDATE contacts SET name = ?, phone = ?, email = ? WHERE ID = ? LIMIT 1 ");
-        $stmt->bind_param("ssss", $name, $email, $phone, $userID); 
+        $stmt->bind_param("ssss", $name, $email, $phone, $ID); 
 
         if($stmt->execute()){
 
