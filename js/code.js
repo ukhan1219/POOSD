@@ -49,7 +49,7 @@ function showToast(message) {
 }
 
 
-function doSearch() {
+function doSearch(callback) {
     readCookie();
 
     let url = urlBase + "/search." + extension;
@@ -100,12 +100,13 @@ function doSearch() {
 }
 
 window.onload = function () {
-    const contact = JSON.parse(localStorage.getItem("editContact"));
+    doSearch(() => {
+    let contact = JSON.parse(localStorage.getItem("editContact"));
     if (contact) {
         document.getElementById('name').value = contact.name;
         document.getElementById('email').value = contact.email;
         document.getElementById('phone').value = contact.phone;
-    }
+    }});
 }
 
 function editContactRedirect(contactID) {
