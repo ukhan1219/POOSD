@@ -81,7 +81,7 @@ function doSearch() {
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>
-                        <button class="edit-btn" onclick="editContact(${contact.ID})">Edit</button>
+                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID})">Edit</button>
                         <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
                     </td>
                 `;
@@ -96,7 +96,7 @@ function doSearch() {
     }
 }
 
-function editContact(contactID) {
+function editContacRedirect(contactID) {
     readCookie();
 
     let contactToEdit =  '';
@@ -110,24 +110,23 @@ function editContact(contactID) {
     localStorage.setItem("editContact", JSON.stringify(contactToEdit));
 
     window.location.href = "edit.html";
+}
 
+function editContact() {
+    let  contactToEdit = JSON.parse(localStorage.getItem("editContact"));
 
-    let name = document.getElementById("name").value;
+    let name =  document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
 
-    // document.getElementById("contactEditResult").innerHTML = "";
-
-    let tmp = { ID: contactToEdit.ID, name: name, email: email, phone: phone, userID, userID };
+    let tmp = { ID: contactToEdit.IDm , name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
     let url = urlBase + "/edit." + extension;
 
     let xhr = new XMLHttpRequest();
-
     xhr.open("POST", url, true);
-
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
@@ -136,15 +135,17 @@ function editContact(contactID) {
                 doSearch();
                 window.location.href = "account.html";
                 showToast("Contact has been edited successfully!");
-                // document.getElementById("contactEditResult").innerHTML = "Contact has been edited successfully!";
             }
         };
         xhr.send(payload);
     }
     catch (err) {
-        console.log(err.message);
+        console.log(err.messgae);
     }
+
+
 }
+
 
 function deleteContact(contactID) {
     readCookie();
