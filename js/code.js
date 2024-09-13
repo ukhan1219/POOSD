@@ -99,7 +99,7 @@ function doSearch() {
 function editContactRedirect(contactID) {
     readCookie();
 
-    let contactToEdit =  '';
+    let contactToEdit =  null;
     for (let i = 0; i < contacts.length; i++) {
         if (contacts[i].ID === contactID){
             contactToEdit = contacts[i];
