@@ -7,7 +7,6 @@ const extension = 'php'
 let userID = 0;
 let firstName = "";
 let lastName = "";
-let contacts  = [];
 
 
 
@@ -68,7 +67,7 @@ function doSearch() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                contacts = jsonObject.results;
+                let contacts = jsonObject.results;
 
                 let contactsBody = document.getElementById("contacts-body");
                 contactsBody.innerHTML = "";
@@ -81,7 +80,7 @@ function doSearch() {
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>
-                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID})">Edit</button>
+                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID}, contacts)">Edit</button>
                         <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
                     </td>
                 `;
@@ -105,7 +104,7 @@ window.onload = function () {
     }
 }
 
-function editContactRedirect(contactID) {
+function editContactRedirect(contactID, contacts) {
     readCookie();
 
     let contactToEdit =  contacts.find(contact => contact.ID === contactID);
