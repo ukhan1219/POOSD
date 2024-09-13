@@ -107,8 +107,6 @@ window.onload = function () {
 
 function editContactRedirect(contactID) {
     readCookie();
-
-    doSearch(() => {
         let contactToEdit = contacts.find(contact => contact.ID === contactID);
         if (!contactToEdit) {
             alert('Contact not found!');
@@ -116,7 +114,6 @@ function editContactRedirect(contactID) {
         }
         localStorage.setItem("editContact", JSON.stringify(contactToEdit));
         window.location.href = "edit.html";
-    });
 }
 
 function editContact() {
