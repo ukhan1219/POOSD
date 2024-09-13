@@ -49,7 +49,7 @@ function showToast(message) {
 }
 
 
-function doSearch(callback) {
+function doSearch() {
     readCookie();
 
     let url = urlBase + "/search." + extension;
@@ -87,9 +87,6 @@ function doSearch(callback) {
                 `;
                     contactsBody.appendChild(row);
                 }
-                if (callback) {
-                    callback();
-                }
             }
         };
         xhr.send(payload);
@@ -100,13 +97,12 @@ function doSearch(callback) {
 }
 
 window.onload = function () {
-    doSearch(() => {
     let contact = JSON.parse(localStorage.getItem("editContact"));
     if (contact) {
         document.getElementById('name').value = contact.name;
         document.getElementById('email').value = contact.email;
         document.getElementById('phone').value = contact.phone;
-    }});
+    }
 }
 
 function editContactRedirect(contactID) {
