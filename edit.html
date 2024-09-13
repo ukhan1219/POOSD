@@ -27,10 +27,10 @@
     </h1>
     <!-- Contact Form for Adding a New Contact -->
     <div>
-        <main class="form-containerEdit">
+        <main class="form-containerEdit" onsubmit="">
             <h2>Edit Contact</h2>
 
-            <form class="horizontal-form">
+            <form class="horizontal-form" onsubmit="editContact(); return false;">
                 <label for="name">Name:</label>
                 <input type="text" id="name" placeholder="Name" required>
                 <br>
