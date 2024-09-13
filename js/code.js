@@ -103,11 +103,6 @@ function editContact(contactID) {
 
     // document.getElementById("contactEditResult").innerHTML = "";
 
-    if (name == "" || email == "" || phone == "") {
-        alert("Please fill all fields!");
-        return;
-    }
-
     let tmp = { ID: contactID, name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
