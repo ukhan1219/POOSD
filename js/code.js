@@ -119,6 +119,7 @@ function saveContact(contactID) {
                 document.getElementById("contactEditResult").innerHTML = "Contact has been Edited successfully!";
             }
         };
+        document.getElementById("contactEditResult").innerHTML = "";
         xhr.send(payload);
     }
     catch (err) {
