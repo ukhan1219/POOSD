@@ -7,6 +7,7 @@ const extension = 'php'
 let userID = 0;
 let firstName = "";
 let lastName = "";
+let contacts = [];
 
 
 
@@ -67,7 +68,7 @@ function doSearch() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                window.contacts = jsonObject.results;
+                contacts = jsonObject.results;
 
                 let contactsBody = document.getElementById("contacts-body");
                 contactsBody.innerHTML = "";
