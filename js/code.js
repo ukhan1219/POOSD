@@ -96,7 +96,7 @@ function doSearch() {
     }
 }
 
-function editContacRedirect(contactID) {
+function editContactRedirect(contactID) {
     readCookie();
 
     let contactToEdit =  '';
