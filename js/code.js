@@ -67,7 +67,7 @@ function doSearch() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
-                let contacts = jsonObject.results;
+                window.contacts = jsonObject.results;
 
                 let contactsBody = document.getElementById("contacts-body");
                 contactsBody.innerHTML = "";
@@ -80,7 +80,7 @@ function doSearch() {
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>
-                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID}, contacts)">Edit</button>
+                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID})">Edit</button>
                         <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
                     </td>
                 `;
@@ -104,7 +104,7 @@ window.onload = function () {
     }
 }
 
-function editContactRedirect(contactID, contacts) {
+function editContactRedirect(contactID) {
     readCookie();
 
     let contactToEdit =  contacts.find(contact => contact.ID === contactID);
