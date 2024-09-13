@@ -1,55 +1,14 @@
 const urlBase = 'http://connectify.fyi/LAMPAPI';
 const extension = 'php'
 
-// DELETE ALERT BOXESSSSSSSSS AFTER!!!!!!!!!!
-// ^^^^^^^^^
-
 let userID = 0;
 let firstName = "";
 let lastName = "";
 let contacts = [];
 
-
-
-// NEED SAVE EDIT OR CANCEL EDIT?
-
-
-// SAMPLE HTML FILE FOR LANDING PAGE CONTACT TABLE:
-{/* <table id="contacts-table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody id="contacts-body">
-        <!-- contacts will be displayed here -->
-    </tbody>
-</table> */}
-
-// SAMPLE BUTTONS TO BE CODED INTO HTML FILE WITH THE TABLE:
-// <button class="edit-btn" onclick="editContact(${contact.ID})">Edit</button>
-// <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
-
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toast-message');
-
-    toastMessage.textContent = message;
-    toast.classList.remove('hidden');
-    toast.classList.add('visible');
-
-    setTimeout(() => {
-        toast.classList.remove('visible');
-        toast.classList.add('hidden');
-    }, 3000);
-}
-
-
+//  search function
 function doSearch() {
+    //  ensure correct user is logged in 
     readCookie();
 
     let url = urlBase + "/search." + extension;
@@ -72,19 +31,25 @@ function doSearch() {
 
                 let contactsBody = document.getElementById("contacts-body");
                 contactsBody.innerHTML = "";
-
+                //  for loop to list all contacts assigned to a user, and hidden elements to allow for editing of the contacts inline without having
+                //  to navigate to a new page
                 for (let i = 0; i < contacts.length; i++) {
                     let contact = contacts[i];
                     let row = document.createElement("tr");
+
+                    //  assign contact id to the row data-id as well for easier indexing and passing contact id values to other functions which require it
+                    row.setAttribute("data-id", contact.ID);
                     row.innerHTML = `
-                    <td>${contact.name}</td>
-                    <td>${contact.email}</td>
-                    <td>${contact.phone}</td>
-                    <td>
-                        <button class="edit-btn" onclick="editContactRedirect(${contact.ID})">Edit</button>
-                        <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
-                    </td>
-                `;
+                        <td><span class="contact-name">${contact.name}</span><input type="text" class="edit-name hidden" value="${contact.name}"></td>
+                        <td><span class="contact-email">${contact.email}</span><input type="text" class="edit-email hidden" value="${contact.email}"></td>
+                        <td><span class="contact-phone">${contact.phone}</span><input type="text" class="edit-phone hidden" value="${contact.phone}"></td>
+                        <td>
+                            <button class="edit-btn" onclick="enableEditMode(${contact.ID})">Edit</button>
+                            <button class="save-btn hidden" onclick="saveContact(${contact.ID})">Save</button>
+                            <button class="cancel-btn hidden" onclick="cancelEdit(${contact.ID})">Cancel</button>
+                            <button class="delete-btn" onclick="deleteContact(${contact.ID})">Delete</button>
+                        </td>
+                    `;
                     contactsBody.appendChild(row);
                 }
             }
@@ -96,34 +61,38 @@ function doSearch() {
     }
 }
 
-window.onload = function () {
-    let contact = JSON.parse(localStorage.getItem("editContact"));
-    if (contact) {
-        document.getElementById('name').value = contact.name;
-        document.getElementById('email').value = contact.email;
-        document.getElementById('phone').value = contact.phone;
-    }
+
+//  function to enable edit mode for a contact and subsequently change the buttons by looking for the correct contact and data id assigned earlier when 
+//  returning all contacts
+function enableEditMode(contactID) {
+    let row = document.querySelector(`tr[data-id="${contactID}"]`)
+    row.querySelectorAll('span').forEach(el => el.classList.add('hidden'));
+    row.querySelectorAll('input').forEach(el => el.classList.remove('hidden'));
+    row.querySelector('.edit-btn').classList.add('hidden');
+    row.querySelector('.save-btn').classList.remove('hidden');
+    row.querySelector('.cancel-btn').classList.remove('hidden');
 }
 
-function editContactRedirect(contactID) {
-    readCookie();
-        let contactToEdit = contacts.find(contact => contact.ID === contactID);
-        if (!contactToEdit) {
-            alert('Contact not found!');
-            return;
-        }
-        localStorage.setItem("editContact", JSON.stringify(contactToEdit));
-        window.location.href = "edit.html";
+
+//  function to cancel changes of the contact incase the user want to keep the contact as is 
+function cancelEdit(contactID) {
+    let row = document.querySelector(`tr[data-id="${contactID}"]`);
+    row.querySelectorAll('span').forEach(el => el.classList.remove('hidden'));
+    row.querySelectorAll('input').forEach(el => el.classList.add('hidden'));
+    row.querySelector('.edit-btn').classList.remove('hidden');
+    row.querySelector('.save-btn').classList.add('hidden');
+    row.querySelector('.cancel-btn').classList.add('hidden');
 }
 
-function editContact() {
-    let contactToEdit = JSON.parse(localStorage.getItem("editContact"));
+//  save the changes the user made to the contact
+function saveContact(contactID) {
+     // document.getElementById("contactEditResult").innerHTML = "";
+    let row = document.querySelector(`tr[data-id="${contactID}"]`);
+    let name = row.querySelector('.edit-name').value;
+    let email = row.querySelector('.edit-email').value;
+    let phone = row.querySelector('.edit-phone').value;
 
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-
-    let tmp = { ID: contactToEdit.ID, name: name, email: email, phone: phone, userID, userID };
+    let tmp = { ID: contactID, name: name, email: email, phone: phone, userID, userID };
 
     let payload = JSON.stringify(tmp);
 
@@ -133,15 +102,16 @@ function editContact() {
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-
+    //  API request delivery to update the contact information and success result
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                window.location.href = "account.html";
-                doSearch();
-
+                row.querySelector('.contact-name').textContent = name;
+                row.querySelector('.contact-email').textContent = email;
+                row.querySelector('.contact-phone').textContent = phone;
 
                 showToast("Contact has been edited successfully!");
+                 // document.getElementById("contactEditResult").innerHTML = "";
             }
         };
         xhr.send(payload);
@@ -153,7 +123,7 @@ function editContact() {
 
 }
 
-
+//  function to delete contact and ensuring the user truly wants to delete the contact
 function deleteContact(contactID) {
     readCookie();
     var confirmDel = window.confirm("Are you sure you want to delete this contact?");
@@ -174,6 +144,7 @@ function deleteContact(contactID) {
 
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+    //  API request delivery to delete the contact information, and success result
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -189,6 +160,7 @@ function deleteContact(contactID) {
     }
 }
 
+//  function to create the contact bound to a user
 function createContact() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
@@ -196,9 +168,6 @@ function createContact() {
     // document.getElementById("contactAddResult").innerHTML = "";
 
     readCookie();
-
-    // ADD EXTRA USERID CHECK LOGIN BLOCK>??
-
 
     if (name == "" || phone == "" || email == "") {
         alert("Please fill all fields!");
@@ -217,6 +186,7 @@ function createContact() {
 
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+    //  API request delivery to create a new contact and success result
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -242,12 +212,15 @@ function createContact() {
 
 }
 
+//  function to create a new user to the applicatoin 
 function doRegister() {
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+
     document.getElementById("registerResult").innerHTML = "";
+
     if (firstName === "" || lastName === "" || username === "" || password === "") {
         alert("Fill out all field please!");
         return;
@@ -265,6 +238,7 @@ function doRegister() {
 
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+    //  API request delivery to create a new user and success result
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -280,6 +254,8 @@ function doRegister() {
     }
 }
 
+
+//  function to login an existing user to the applicatoin 
 function doLogin() {
     userID = 0;
     firstName = "";
@@ -291,6 +267,7 @@ function doLogin() {
     document.getElementById("loginResult").innerHTML = "";
 
     let tmp = { username: username, password: password };
+
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/login.' + extension;
@@ -298,6 +275,8 @@ function doLogin() {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    //  API request delivery to check if user exists and log them in if they do, sand save cookies, or return error if they dont
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -323,6 +302,8 @@ function doLogin() {
     }
 }
 
+
+//  save cookie funtion 
 function saveCookie() {
     let minutes = 20;
     let date = new Date();
@@ -330,6 +311,7 @@ function saveCookie() {
     document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userID=" + userID + ";expires=" + date.toGMTString();
 }
 
+//  read cookie function to ensure the correct user is still logged in and allowing them to access only their contacts
 function readCookie() {
     userID = -1;
     let data = document.cookie;
@@ -354,6 +336,8 @@ function readCookie() {
     }
 }
 
+
+//  logout function to gracefully log a user out
 function doLogout() {
     userID = 0;
     firstName = "";
@@ -362,15 +346,15 @@ function doLogout() {
     window.location.href = "index.html";
 }
 
+//  ensuring that the phone number that is entered follows the correct format
 function formatPhoneNumber(event) {
-    const input = event.target;
-    let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+    let input = event.target;
+    let value = input.value.replace(/\D/g, '');
 
     if (value.length > 10) {
-        value = value.slice(0, 10); // Limit to 10 digits
+        value = value.slice(0, 10);
     }
 
-    // Format the value as (XXX)-XXX-XXXX
     if (value.length > 6) {
         value = `(${value.slice(0, 3)})-${value.slice(3, 6)}-${value.slice(6)}`;
     } else if (value.length > 3) {
@@ -382,9 +366,8 @@ function formatPhoneNumber(event) {
     input.value = value;
 }
 
-// Attach the formatPhoneNumber function to the input element
 document.addEventListener('DOMContentLoaded', function () {
-    const phoneInput = document.getElementById('phone');
+    let phoneInput = document.getElementById('phone');
     if (phoneInput) {
         phoneInput.addEventListener('input', formatPhoneNumber);
     }
