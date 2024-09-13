@@ -244,18 +244,23 @@ p {
     cursor: pointer;
 }
 
-.horizontal-form cancelButton {
+.horizontal-form button:hover {
+    background-color: #19ad66;
+}
+
+.buttonCancel {
     padding: 10px 20px;
-    background-color: #0f6b3f;
+    background-color: #b30000;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.horizontal-form cancelButton:hover {
-    background-color: #19ad66;
+.buttonCancel:hover {
+    background-color: #e20000;
 }
+
 
 /* login form container styling  */
 .form-containerLogin {
