@@ -77,8 +77,8 @@ function enableEditMode(contactID) {
 //  function to cancel changes of the contact incase the user want to keep the contact as is 
 function cancelEdit(contactID) {
     let row = document.querySelector(`tr[data-id="${contactID}"]`);
-    row.querySelectorAll('span').forEach(row => row.classList.remove('hidden'));
-    row.querySelectorAll('input').forEach(row => row.classList.add('hidden'));
+    row.querySelectorAll('span').forEach(rowElement => rowElement.classList.remove('hidden'));
+    row.querySelectorAll('input').forEach(rowElement => rowElement.classList.add('hidden'));
     row.querySelector('.edit-btn').classList.remove('hidden');
     row.querySelector('.save-btn').classList.add('hidden');
     row.querySelector('.cancel-btn').classList.add('hidden');
@@ -110,11 +110,11 @@ function saveContact(contactID) {
                 row.querySelector('.contact-email').textContent = email;
                 row.querySelector('.contact-phone').textContent = phone;
 
-                row.querySelectorAll('span').forEach(row => row.classList.remove('hidden'));
-                row.querySelectorAll('input').forEach(row => row.classList.add('hidden'));
+                row.querySelectorAll('span').forEach(rowElement => rowElement.classList.remove('hidden'));
+                row.querySelectorAll('input').forEach(rowElement => rowElement.classList.add('hidden'));
                 row.querySelector('.edit-btn').classList.remove('hidden');
                 row.querySelector('.save-btn').classList.add('hidden');
-                row.querySelector('cancel-btn').classList.add('hidden');
+                row.querySelector('.cancel-btn').classList.add('hidden');
 
                 document.getElementById("contactEditResult").innerHTML = "Contact has been Edited successfully!";
             }
