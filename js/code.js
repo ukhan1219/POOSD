@@ -117,9 +117,12 @@ function saveContact(contactID) {
                 row.querySelector('.cancel-btn').classList.add('hidden');
 
                 document.getElementById("contactEditResult").innerHTML = "Contact has been Edited successfully!";
+                setTimeout(() => {
+                    document.getElementById("contactEditResult").innerHTML = "";
+                }, 3000);
+
             }
         };
-        document.getElementById("contactEditResult").innerHTML = "";
         xhr.send(payload);
     }
     catch (err) {
