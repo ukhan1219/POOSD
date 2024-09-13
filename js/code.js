@@ -96,6 +96,15 @@ function doSearch() {
     }
 }
 
+window.onload = function () {
+    const contact = JSON.parse(localStorage.getItem("editContact"));
+    if (contact) {
+        document.getElementById('name').value = contact.name;
+        document.getElementById('email').value = contact.email;
+        document.getElementById('phone').value = contact.phone;
+    }
+}
+
 function editContactRedirect(contactID) {
     readCookie();
 
@@ -133,15 +142,17 @@ function editContact() {
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                window.location.href = "account.html";    
                 doSearch();
-                window.location.href = "account.html";
+
+                
                 showToast("Contact has been edited successfully!");
             }
         };
         xhr.send(payload);
     }
     catch (err) {
-        console.log(err.messgae);
+        console.log(err.message);
     }
 
 
