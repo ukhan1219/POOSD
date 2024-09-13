@@ -405,10 +405,6 @@ p {
     background-color: #e20000;
 }
 
-#contacts-table tr:hover {
-    background-color: #f9f9f9;
-}
-
 #loginResult {
     margin-top: 10px;
     color: red;
