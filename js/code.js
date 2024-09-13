@@ -141,7 +141,7 @@ function deleteContact(contactID) {
         return;
     }
     let tmp = { ID: contactID };
-    // document.getElementById("contactDeleteResult").innerHTML = "";
+    document.getElementById("contactDeleteResult").innerHTML = "";
 
     let payload = JSON.stringify(tmp);
 
@@ -159,6 +159,10 @@ function deleteContact(contactID) {
             if (this.readyState == 4 && this.status == 200) {
                 doSearch();
                 document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted successfully!";
+
+                setTimeout(() => {
+                    document.getElementById("contactDeleteResult").innerHTML = "";
+                }, 3000);
             }
         };
         xhr.send(payload);
@@ -207,6 +211,9 @@ function createContact() {
                     document.getElementById("name").value = "";
                     document.getElementById("email").value = "";
                     document.getElementById("phone").value = "";
+                    setTimeout(() => {
+                        document.getElementById("contactAddResult").innerHTML = "";
+                    }, 3000);
                 }
             }
         };
