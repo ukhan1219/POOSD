@@ -108,12 +108,11 @@ window.onload = function () {
 function editContactRedirect(contactID) {
     readCookie();
 
-    let contactToEdit =  null;
-    for (let i = 0; i < contacts.length; i++) {
-        if (contacts[i].ID === contactID){
-            contactToEdit = contacts[i];
-            break;
-        }
+    let contactToEdit =  contacts.find(contact => contact.ID === contactID);
+
+    if (!contactToEdit) {
+        alert('Contact not found!');
+        return;
     }
 
     localStorage.setItem("editContact", JSON.stringify(contactToEdit));
