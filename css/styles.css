@@ -395,7 +395,7 @@ p {
     vertical-align: middle;
 }
 
-contacts-table tr:hover {
+#contacts-table tr:hover {
     background-color: #f9f9f9;
 }
 
