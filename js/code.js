@@ -11,6 +11,8 @@ function doSearch() {
     //  ensure correct user is logged in 
     readCookie();
 
+    let userSearch = document.getElementById("searchBar").value.toLowerCase();
+
     let url = urlBase + "/search." + extension;
 
     let xhr = new XMLHttpRequest();
@@ -19,7 +21,7 @@ function doSearch() {
 
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-    let tmp = { userID, userID };
+    let tmp = { userSearch:userSearch, userID, userID };
 
     let payload = JSON.stringify(tmp);
 

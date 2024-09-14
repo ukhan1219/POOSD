@@ -1,7 +1,8 @@
 <?php
 
     $inData = getRequestInfo();
-    
+    $userID = $inData["userID"];
+    $searchTerm = "%" . $inData["userSearch"] . "%";
     $searchResults = "";
     $searchCount = 0;
 
@@ -12,9 +13,9 @@
     } 
     else
     {
-        $searchTerm = "%" . $inData["search"] . "%";
-        $stmt = $conn->prepare("SELECT ID, name, email, phone FROM contacts WHERE userID = ?");
-        $stmt->bind_param("i", $inData["userID"]);
+        
+        $stmt = $conn->prepare("SELECT ID, name, email, phone FROM contacts WHERE userID = ? AND LOWER(name) LIKE ?");
+        $stmt->bind_param("is", $userID, $searchTerm);
         $stmt->execute();
         
         $result = $stmt->get_result();
