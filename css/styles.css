@@ -461,7 +461,7 @@ p {
     margin: 0 5px;
 }
 
-.delete-btn:hover {
+.cancel-btn:hover {
     background-color: #e20000;
 }
 
