@@ -202,18 +202,6 @@ p {
     box-sizing: border-box;
 }
 
-.form-containerEdit {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 66%;
-    max-width: 1000px;
-    margin: 50px auto;
-    margin-top: 500px;
-    box-sizing: border-box;
-}
-
 /* styling to make the form horizontal  */
 .horizontal-form {
     display: flex;
@@ -479,6 +467,18 @@ p {
 }
 
 #contactAddResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+#contactEditResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+#contactDeleteResult {
     display: flex;
     justify-content: center;
     align-items: center;
