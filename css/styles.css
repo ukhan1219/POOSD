@@ -279,6 +279,20 @@ p {
     align-items: center;
 }
 
+.accounthead {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto;
+}
+
+.loginImage {
+    max-width: 80%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
 .password-container {
     position: relative;
 }
@@ -488,6 +502,12 @@ p {
 html,
 body {
     overflow-x: hidden;
+    background-image: url("../images/indexbgd.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    height: 100vh; 
+    margin: 0;
 }
 
 ::-webkit-scrollbar {
